@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements RVClick{
+public class MainActivity extends AppCompatActivity implements AnimalClick {
 
     private ArrayList<Animal> arrayList;
     private RecyclerView recyclerView;
@@ -37,15 +37,15 @@ public class MainActivity extends AppCompatActivity implements RVClick{
 
     private void initAdapter() {
         recyclerView = findViewById(R.id.recyclerView);
-        RVAdapter rvAdapter = new RVAdapter(arrayList, this);
-        recyclerView.setAdapter(rvAdapter);
+        AnimalAdapter animalAdapter = new AnimalAdapter(arrayList, this);
+        recyclerView.setAdapter(animalAdapter);
     }
 
     @Override
     public void rvClicked(Animal animal) {
-        System.out.println(animal.getName()/*, rv.getColor(), rv.getWeight(), rv.getImage()*/);
+        System.out.println(animal.getName());
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-        intent.putExtra("RV", animal);
+        intent.putExtra("animal", animal);
         startActivity(intent);
     }
 }

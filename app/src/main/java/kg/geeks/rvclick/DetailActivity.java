@@ -27,13 +27,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void getObject() {
-        Animal animal = (Animal) getIntent().getSerializableExtra("RV");
+        Animal animal = (Animal) getIntent().getSerializableExtra("animal");
         tvName.setText(animal.getName());
         tvColor.setText(animal.getColor());
         tvWeight.setText(String.valueOf(animal.getWeight()));
         imageView.setImageResource(animal.getImage());
     }
-
-
-
 }

@@ -1,6 +1,6 @@
 package kg.geeks.rvclick;
 
-public interface RVClick {
+public interface AnimalClick {
 
     void rvClicked(Animal animal);
 }

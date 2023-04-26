@@ -11,27 +11,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RVViewHolder> {
+public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.RVViewHolder> {
 
     private ArrayList<Animal> arrayList;
-    private RVClick rvClick;
+    private AnimalClick animalClick;
 
-    public RVAdapter(ArrayList<Animal> arrayList, RVClick rvClick) {
+    public AnimalAdapter(ArrayList<Animal> arrayList, AnimalClick animalClick) {
         this.arrayList = arrayList;
-        this.rvClick =rvClick;
+        this.animalClick = animalClick;
     }
 
     @NonNull
     @Override
-    public RVAdapter.RVViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new RVViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv, parent, false));
+    public AnimalAdapter.RVViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new RVViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_animal, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RVAdapter.RVViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AnimalAdapter.RVViewHolder holder, int position) {
         holder.onBind(arrayList.get(position));
         holder.itemView.setOnClickListener(view ->
-                rvClick.rvClicked(arrayList.get(position)));
+                animalClick.rvClicked(arrayList.get(position)));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RVViewHolder> {
         public RVViewHolder(@NonNull View itemView) {
             super(itemView);
         }
-        
+
         private void initUI() {
             tvName = itemView.findViewById(R.id.tv_item_name);
             ivItem =itemView.findViewById(R.id.iv_item);
@@ -58,7 +58,5 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.RVViewHolder> {
             tvName.setText(animal.getName());
             ivItem.setImageResource(animal.getImage());
         }
-
-
     }
 }
